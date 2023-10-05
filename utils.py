@@ -19,7 +19,8 @@ def checkCharacters(pwd):
 def checkCommonPasswords(pwd):
     commonPwdList = os.listdir("./Lists")
     for pwdListFile in commonPwdList:
-        with open(f'./Lists/{pwdListFile}',"r") as pwdList:
+        with open(f'./Lists/{pwdListFile}',"r",encoding="utf-8") as pwdList:
             for commonPwd in pwdList:
-                if(commonPwd.split().pop() == pwd):
-                    return False
+                if(commonPwd.rstrip("\n") == pwd):
+                    return False 
+    return True
